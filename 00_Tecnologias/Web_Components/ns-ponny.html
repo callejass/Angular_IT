@@ -1,0 +1,32 @@
+<template id="pony-tpl">
+    <style>
+        h1 {
+            color: orange;
+        }
+    </style>
+    <h1>General soda aaa</h1>
+</template>
+<script>
+
+    var PonyComponentProto = Object.create(HTMLElement.prototype);
+    // new element
+    PonyComponentProto.createdCallback = function () {
+        let oImport = document.querySelector('link[rel="import"]').import;
+        const template = oImport.querySelector("template");
+        let clone = document.importNode(template.content, true);
+        let shadow = this.createShadowRoot();
+        this.createShadowRoot().appendChild(clone);
+    };
+
+
+    let PonyComponent = document.registerElement('ns-pony',{prototype: PonyComponentProto});
+    // insert in current body
+    document.body.appendChild(new PonyComponent());
+
+
+
+    
+
+
+
+</script>
