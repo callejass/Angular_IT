@@ -1,0 +1,8 @@
+<div>
+  <label for="nombre">Dime tu nombre</label>
+  <input type="text" id="nombre" [(ngModel)]="sNombre"/>
+
+  <button (click)="borrar()">Borrar</button>
+  <pre>{{sNombre|json}}</pre>
+  <p>Hola {{sNombre}}</p>
+</div>

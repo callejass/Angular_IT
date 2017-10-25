@@ -1,0 +1,21 @@
+<div>
+  <label for="pensamiento">que estás pensando?</label>
+  <input type="text" id="pensamiento" [(ngModel)]="pensamiento" />
+  <button (click)="insertar()">Añadir</button>
+  
+  <!-- solo con angular 4 -->
+  <aside *ngIf="pensamientos.length;then conideas else sinideas">
+
+  </aside>
+  <ng-template #conideas>
+    
+    <h3 *ngIf="pensamientos.length">Lista de ideas</h3>
+    <ul>
+      <li *ngFor="let l of pensamientos;let i=index">({{i+1}}){{l}}</li>
+    </ul>
+  </ng-template>
+  <ng-template #sinideas>
+    <h3>Escribe alguna idea</h3>
+  </ng-template>
+
+</div>
