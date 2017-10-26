@@ -1,0 +1,13 @@
+<div>
+  <h3>Pipes</h3>
+  <label for="nombre">Dime tu nombre</label>
+  <input type="text" id="nombre" [(ngModel)]="sNombre"/>
+
+  <button (click)="borrar()">Borrar</button>
+  <pre>{{sNombre|json}}</pre>
+  <p>Hola {{sNombre | uppercase }}</p>
+  <p>{{precio |currency}}</p>
+  <pre>{{objeto | json:1}}</pre>
+  <p>{{fecha|date:'dd/MM/yyyy'}}</p>
+  <p>{{precio | number:'5.2-3'}}</p>
+</div>

@@ -7,11 +7,12 @@
   <aside *ngIf="pensamientos.length;then conideas else sinideas">
 
   </aside>
+  <!-- <app-pensamiento></app-pensamiento> -->
   <ng-template #conideas>
     
     <h3 *ngIf="pensamientos.length">Lista de ideas</h3>
     <ul>
-      <li *ngFor="let l of pensamientos;let i=index">({{i+1}}){{l}}</li>
+      <li *ngFor="let l of pensamientos;let i=index;let par=odd" [class.par]="par ">({{i+1}}){{l}}</li>
     </ul>
   </ng-template>
   <ng-template #sinideas>
