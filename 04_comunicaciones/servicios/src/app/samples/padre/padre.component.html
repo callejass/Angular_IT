@@ -1,0 +1,18 @@
+<div>
+  <h2>Servicio de libros</h2>
+  <input type="text" placeholder="escribe una clave" [(ngModel)]="clave"/>
+  <button (click)="buscar()">Buscar</button>
+  <div *ngIf="aLibros.length">
+    <h3>Resultado de la búsqueda</h3>
+    <ul>
+      <li *ngFor="let libro of aLibros">{{libro}}</li>
+    </ul>
+  </div>
+  
+
+
+
+  <!-- <app-hijo [nombre]="clave" (eventBorrar)="respuestaEvento($event)"></app-hijo> -->
+
+  <!-- <p>El hijo se llama {{nombre}}</p> -->
+</div>
