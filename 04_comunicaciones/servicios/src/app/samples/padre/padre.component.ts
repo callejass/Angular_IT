@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { LibrosService } from './../../misservicios/libros.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class PadreComponent implements OnInit {
 
   public clave: string;
   public aLibros: Array<string>;
-  constructor(private librosService: LibrosService) { }
+  constructor(private librosService: LibrosService, private http: Http) { }
 
   ngOnInit() {
     this.aLibros = [];
@@ -21,6 +22,18 @@ export class PadreComponent implements OnInit {
     this.nombre = evento;
   } */
   buscar() {
-    this.aLibros = this.librosService.buscar(this.clave);
+    const url = 'https://www.googleapis.com/books/v1/volumes?q=intitle:' + this.clave;
+    this.http.get(url).subscribe(
+      (response) => {
+        console.log(response);
+        const data = response.json();
+        console.log(data);
+        data.items.forEach(element => {
+          this.aLibros.push(element.volumeInfo.title);
+        });
+       } ,
+      (error ) => { console.log(error); }
+    );
+    // this.aLibros = this.librosService.buscar(this.clave);
   }
 }
